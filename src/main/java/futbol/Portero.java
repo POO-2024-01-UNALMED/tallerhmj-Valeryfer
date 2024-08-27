@@ -17,7 +17,7 @@ public class Portero extends Futbolista {
     @Override
     public String toString() {
         return "El futbolista " + getNombre() + " tiene " + getEdad() + ", y juega de " + getPosicion() + " con el dorsal "
-        + this.dorsal + ". Le han marcado " + this.golesRecibidos;
+        + dorsal + ". Le han marcado " + golesRecibidos;
     }
 
 
@@ -26,33 +26,12 @@ public class Portero extends Futbolista {
        return true;
     }
 
-    public int compareTo(Futbolista o) {
-        if (getGolesRecibidos() - ((Portero) o).getGolesRecibidos() > 0) {
-            return getGolesRecibidos() - ((Portero) o).getGolesRecibidos();
-        }else {
-            return (getGolesRecibidos() - ((Portero) o).getGolesRecibidos()) * -1 ;
+    @Override
+    public int compareTo(Object f){
+        if (f instanceof Portero){
+            Portero p = (Portero) f;
+            return Math.abs(this.golesRecibidos - p.golesRecibidos);
         }
+        else {return this.golesRecibidos;}
     }
-
-
-    //Getters y Setters
-    public short getGolesRecibidos() {
-        return golesRecibidos;
-    }
-
-
-    public void setGolesRecibidos(short golesRecibidos) {
-        this.golesRecibidos = golesRecibidos;
-    }
-
-
-    public byte getDorsal() {
-        return dorsal;
-    }
-
-
-    public void setDorsal(byte dorsal) {
-        this.dorsal = dorsal;
-    }
-
 }
